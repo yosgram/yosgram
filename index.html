@@ -5,20 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>یوزگرام</title>
   <style>
+    @font-face {
+      font-family: 'Shabnam';
+      src: url('font/Kalameh Regular.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
     body {
       margin: 0;
-      font-family: sans-serif;
-      background: linear-gradient(135deg, #ff3c6c, #7e00ff);
+      font-family: 'Shabnam', sans-serif;
+      background: linear-gradient(135deg, #facc15, #f97316, #ff3c6c, #dc2626, #7e00ff);
+      background-size: 300% 300%;
+      animation: gradientBG 10s ease infinite;
       display: flex;
       justify-content: center;
       align-items: center;
       height: 100vh;
     }
 
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     .container {
       width: 360px;
       height: 100vh;
-      background: linear-gradient(135deg, #ff3c6c, #7e00ff);
+      background: linear-gradient(135deg, #facc15, #f97316, #ff3c6c, #dc2626, #7e00ff);
+      background-size: 300% 300%;
+      animation: gradientBG 15s ease infinite;
       display: flex;
       flex-direction: column;
       justify-content: start;
@@ -27,11 +44,14 @@
     }
 
     .header {
-      background: linear-gradient(135deg, #ff3c6c, #7e00ff);
+      font-family: 'Shabnam', sans-serif;
+      background: linear-gradient(135deg, #facc15, #f97316, #ff3c6c, #dc2626, #7e00ff);
+      background-size: 300% 300%;
+      animation: gradientBG 15s ease infinite;
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
       text-align: center;
       padding: 16px;
-      font-size: 22px;
+      font-size: 30px;
       font-weight: bold;
       color: white;
     }
@@ -42,8 +62,9 @@
       padding: 16px 12px 0;
       gap: 12px;
     }
-    
+
     .button {
+      font-family: 'Shabnam', sans-serif;
       flex: 1;
       padding: 12px 0;
       border-radius: 12px;
@@ -53,39 +74,32 @@
       color: white;
       text-decoration: none;
       text-align: center;
-    
       display: flex;
       align-items: center;
       justify-content: center;
     }
-    
+
     .button.login {
       background-color: #2563eb;
     }
-    
-    .button.login:hover {
-      transform: scale(1.05);
-    }
-    
+
     .button.free {
       background-color: #059669;
     }
-    
-    .button.free:hover {
+
+    .button:hover {
       transform: scale(1.05);
     }
-    
+
     .icons {
       display: grid;
-      grid-template-columns: repeat(4, 80px); /* عرض آیکون‌ها کوچیک‌تر */
-      justify-content: center; /* وسط‌چین‌شدن گرید */
+      grid-template-columns: repeat(4, 80px);
+      justify-content: center;
       gap: 10px;
       padding: 16px 12px 0;
       box-sizing: border-box;
-      text-decoration: none;
-      color: white;
     }
-    
+
     .icon {
       width: 65px;
       height: 65px;
@@ -99,9 +113,8 @@
       color: white;
       font-size: 11px;
       text-align: center;
-      padding: 4px;
+      padding: 8px;
       text-decoration: none;
-      color: white;
     }
 
     .icon:hover {
@@ -115,6 +128,35 @@
       margin-bottom: 4px;
     }
 
+    .slider {
+      position: relative;
+      width: 348px;
+      height: 180px;
+      margin: 24px auto 0;
+      border-radius: 16px;
+      overflow: hidden;
+      background-color: white; /* برای اینکه عکس کوچیک شه و جا باز نشون بده */
+    }
+    
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain; /* 👈 این مهمه */
+      border-radius: 16px;
+      opacity: 0;
+      transition: opacity 1s ease;
+      background-color: white;
+    }
+    
+
+    .slide.active {
+      opacity: 1;
+      z-index: 1;
+    }
+
     .footer {
       text-align: center;
       font-size: 12px;
@@ -122,7 +164,7 @@
       color: white;
       background-color: rgba(0, 0, 0, 0.1);
       box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
-      margin-top: auto; /* می‌چسبه به پایین */
+      margin-top: auto;
     }
   </style>
 </head>
@@ -156,9 +198,71 @@
       <a href="page/creative-story.html" class="icon"><img src="images/استوری خلاقانه.png"><span>استوری خلاقانه</span></a>
       <a href="page/youzgram.html" class="icon"><img src="images/یوزگرام.png"><span>یوز گرام</span></a>
     </div>
-    
+
+    <div class="slider">
+      <img class="slide active" src="images/5.png" alt="اسلاید ۱">
+      <img class="slide" src="images/4.png" alt="اسلاید ۲">
+      <img class="slide" src="images/6.png" alt="اسلاید ۳">
+      <img class="slide" src="images/7.png" alt="اسلاید ۴">
+    </div>
+
     <div class="footer">تمام حریم خصوصی متعلق به یوزگرام هست - 2025</div>
   </div>
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+    let currentIndex = 0;
+
+    setInterval(() => {
+      slides[currentIndex].classList.remove('active');
+      currentIndex = (currentIndex + 1) % slides.length;
+      slides[currentIndex].classList.add('active');
+    }, 6000);
+  </script>
+
+
+  <script>
+    // آدرس صفحه ثبت‌نام
+    const signupPage = 'page/siup.html';
+  
+    // لیست صفحات آزاد که نیازی به ثبت‌نام ندارن
+    const freePages = ['page/support.html', 'page/youzgram.html'];
+  
+    // اجرای کد بعد از لود کامل صفحه
+    document.addEventListener("DOMContentLoaded", () => {
+      const icons = document.querySelectorAll(".icon");
+  
+      icons.forEach(icon => {
+        icon.addEventListener("click", (e) => {
+          const targetLink = icon.getAttribute("href");
+  
+          // اگه لینک جزو صفحات آزاد نیست و کاربر ثبت‌نام نکرده، بفرستش صفحه ثبت‌نام
+          if (!freePages.includes(targetLink)) {
+            const isRegistered = localStorage.getItem('isRegistered');
+            if (!isRegistered) {
+              e.preventDefault();
+              window.location.href = signupPage;
+            }
+          }
+        });
+      });
+  
+      // دکمه‌های بالا (مثلاً شروع رایگان)
+      const freeBtn = document.querySelector(".button.free");
+      if (freeBtn) {
+        freeBtn.addEventListener("click", (e) => {
+          const isRegistered = localStorage.getItem('isRegistered');
+          if (!isRegistered) {
+            e.preventDefault();
+            window.location.href = signupPage;
+          }
+        });
+      }
+    });
+  </script>
+  
+
+
 </body>
 </html>
 
