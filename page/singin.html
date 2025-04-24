@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ورود</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: linear-gradient(135deg, #7f00ff, #e100ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .screen {
+      width: 360px;
+      height: 640px;
+      background-color: white;
+      border-radius: 16px;
+      padding: 24px 16px;
+      box-sizing: border-box;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    h2 {
+      text-align: center;
+      color: #7f00ff;
+      margin-bottom: 24px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 14px;
+      box-sizing: border-box;
+      text-align: right;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #7f00ff;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #6200cc;
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 13px;
+    }
+
+    .login-link a {
+      color: #7f00ff;
+      text-decoration: none;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="screen">
+    <h2>ورود</h2>
+    <form onsubmit="return validateLogin()">
+      <input type="text" id="username" placeholder="نام کاربری">
+      <input type="password" id="password" placeholder="رمز عبور">
+      <button type="submit">ورود</button>
+    </form>
+    <div class="login-link">
+      <a href="forgot.html">فراموشی رمز ورود</a>
+    </div>
+  </div>
+
+  <script>
+    function validateLogin() {
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+
+      if (!username || !password) {
+        alert("لطفاً همه فیلدها را پر کنید.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</body>
+</html>

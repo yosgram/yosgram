@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>پشتیبانی یوزگرام</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      margin: 0;
+      font-family: Tahoma, sans-serif;
+      background: linear-gradient(135deg, #7e00ff, #ff3c6c);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .chat-container {
+      width: 360px;
+      height: 600px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 0 30px rgba(0,0,0,0.3);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: slideUp 0.6s ease-out;
+    }
+
+    @keyframes slideUp {
+      from {
+        transform: translateY(100px);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .chat-header {
+      background: rgba(0,0,0,0.2);
+      padding: 16px;
+      font-size: 18px;
+      font-weight: bold;
+      color: white;
+      text-align: center;
+    }
+
+    .chat-messages {
+      flex: 1;
+      padding: 16px;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .message {
+      background: rgba(255,255,255,0.15);
+      color: white;
+      padding: 10px 14px;
+      border-radius: 12px;
+      max-width: 75%;
+      align-self: flex-start;
+      animation: popIn 0.3s ease;
+      word-wrap: break-word;
+    }
+
+    .message.user {
+      background-color: rgba(59, 130, 246, 0.3);
+      align-self: flex-end;
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.95); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .chat-input {
+      padding: 12px;
+      background: rgba(0,0,0,0.15);
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .chat-input input[type="text"] {
+      flex: 1;
+      padding: 10px;
+      border-radius: 8px;
+      border: none;
+      font-size: 14px;
+      outline: none;
+    }
+
+    .chat-input input[type="file"] {
+      display: none;
+    }
+
+    .chat-input label {
+      background-color: #4ade80;
+      padding: 8px 10px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: white;
+      cursor: pointer;
+    }
+
+    .send-btn {
+      background-color: #2563eb;
+      color: white;
+      padding: 10px 14px;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      cursor: pointer;
+    }
+
+    .preview-img {
+      max-width: 40px;
+      max-height: 40px;
+      margin-right: 8px;
+      border-radius: 6px;
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <div class="chat-container">
+    <div class="chat-header">پشتیبانی یوزگرام</div>
+    <div class="chat-messages" id="messages">
+      <div class="message">سلام! 👋 چطور می‌تونیم کمکت کنیم؟</div>
+    </div>
+    <div class="chat-input">
+      <input type="text" id="textMessage" placeholder="پیام خود را بنویسید...">
+      <label for="imageUpload">📎</label>
+      <input type="file" id="imageUpload" accept="image/*">
+      <button class="send-btn" onclick="sendMessage()">ارسال</button>
+    </div>
+  </div>
+
+  <script>
+    let imageData = null;
+
+    document.getElementById('imageUpload').addEventListener('change', function (e) {
+      const file = e.target.files[0];
+      if (file && file.type.startsWith("image/")) {
+        const reader = new FileReader();
+        reader.onload = function (event) {
+          imageData = event.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    function sendMessage() {
+      const text = document.getElementById('textMessage').value.trim();
+      if (!text && !imageData) return;
+
+      const messages = document.getElementById('messages');
+
+      const msgWrapper = document.createElement('div');
+      msgWrapper.className = 'message user';
+
+      if (imageData) {
+        const img = document.createElement('img');
+        img.src = imageData;
+        img.className = 'preview-img';
+        msgWrapper.appendChild(img);
+      }
+
+      if (text) {
+        const span = document.createElement('span');
+        span.textContent = text;
+        msgWrapper.appendChild(span);
+      }
+
+      messages.appendChild(msgWrapper);
+      messages.scrollTop = messages.scrollHeight;
+
+      // پاک‌کردن ورودی‌ها
+      document.getElementById('textMessage').value = '';
+      imageData = null;
+
+      // پیام خودکار
+      setTimeout(() => {
+        const autoReply = document.createElement('div');
+        autoReply.className = 'message';
+        autoReply.textContent = 'پیام شما دریافت شد و در اسرع وقت بهش پاسخ داده میشه. با تشکر از صبر شما 🙏';
+        messages.appendChild(autoReply);
+        messages.scrollTop = messages.scrollHeight;
+      }, 600);
+    }
+  </script>
+</body>
+</html>
+
+

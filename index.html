@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>یوزگرام</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: linear-gradient(135deg, #ff3c6c, #7e00ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .container {
+      width: 360px;
+      height: 100vh;
+      background: linear-gradient(135deg, #ff3c6c, #7e00ff);
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      overflow: hidden;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .header {
+      background: linear-gradient(135deg, #ff3c6c, #7e00ff);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      text-align: center;
+      padding: 16px;
+      font-size: 22px;
+      font-weight: bold;
+      color: white;
+    }
+
+    .buttons {
+      display: flex;
+      justify-content: space-between;
+      padding: 16px 12px 0;
+      gap: 12px;
+    }
+    
+    .button {
+      flex: 1;
+      padding: 12px 0;
+      border-radius: 12px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      color: white;
+      text-decoration: none;
+      text-align: center;
+    
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .button.login {
+      background-color: #2563eb;
+    }
+    
+    .button.login:hover {
+      transform: scale(1.05);
+    }
+    
+    .button.free {
+      background-color: #059669;
+    }
+    
+    .button.free:hover {
+      transform: scale(1.05);
+    }
+    
+    .icons {
+      display: grid;
+      grid-template-columns: repeat(4, 80px); /* عرض آیکون‌ها کوچیک‌تر */
+      justify-content: center; /* وسط‌چین‌شدن گرید */
+      gap: 10px;
+      padding: 16px 12px 0;
+      box-sizing: border-box;
+      text-decoration: none;
+      color: white;
+    }
+    
+    .icon {
+      width: 65px;
+      height: 65px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 12px;
+      transition: transform 0.3s ease, background-color 0.3s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      color: white;
+      font-size: 11px;
+      text-align: center;
+      padding: 4px;
+      text-decoration: none;
+      color: white;
+    }
+
+    .icon:hover {
+      transform: scale(1.1);
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .icon img {
+      width: 30px;
+      height: 30px;
+      margin-bottom: 4px;
+    }
+
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      padding: 12px;
+      color: white;
+      background-color: rgba(0, 0, 0, 0.1);
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+      margin-top: auto; /* می‌چسبه به پایین */
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">دیده بشی بردی!</div>
+    <div class="buttons">
+      <a href="page/start free.html" class="button free">شروع رایگان!</a>
+      <a href="page/siup.html" class="button login">ثبت نام / ورود</a>
+
+
+
+      
+
+    </div>
+    <div class="icons">
+      <a href="page/cover-maker.html" class="icon"><img src="images/کاور ساز.png"><span>کاور ساز</span></a>
+      <a href="page/world.html" class="icon"><img src="images/دنیای ایده.png"><span>دنیای ایده</span></a>
+      <a href="page/graphy.html" class="icon"><img src="images/ویدیو گرافی.png"><span>موبایل گرافی</span></a>
+      <a href="page/golden-video.html" class="icon"><img src="images/ویدیو طلایی.png"><span>ویدیو طلایی</span></a>
+      <a href="page/story.html" class="icon"><img src="images/استوری تعاملی.png"><span>استوری تعاملی</span></a>
+      <a href="page/music.html" class="icon"><img src="images/موزیک.png"><span>موزیک</span></a>
+      <a href="page/edit.html" class="icon"><img src="images/ادیت.png"><span>ادیت</span></a>
+      <a href="page/magic-hooks.html" class="icon"><img src="images/کلمات جادویی.png"><span>قلاب جادویی</span></a>
+      <a href="page/questions.html" class="icon"><img src="images/سولات شما.png"><span>سوالات شما</span></a>
+      <a href="page/explore.html" class="icon"><img src="images/اکسپلور گردی.png"><span>اکسپلور گردی</span></a>
+      <a href="page/admin.html" class="icon"><img src="images/ادمین.png"><span>ادمین</span></a>
+      <a href="page/support.html" class="icon"><img src="images/پشتیببانی.png"><span>پشتیبانی</span></a>
+      <a href="page/marketing.html" class="icon"><img src="images/مارکتینگ.png"><span>مارکتینگ</span></a>
+      <a href="page/team-project.html" class="icon"><img src="images/کار اختصاصی با تیم ما.png"><span>کار اختصاصی با تیم ما</span></a>
+      <a href="page/creative-story.html" class="icon"><img src="images/استوری خلاقانه.png"><span>استوری خلاقانه</span></a>
+      <a href="page/youzgram.html" class="icon"><img src="images/یوزگرام.png"><span>یوز گرام</span></a>
+    </div>
+    
+    <div class="footer">تمام حریم خصوصی متعلق به یوزگرام هست - 2025</div>
+  </div>
+</body>
+</html>
+

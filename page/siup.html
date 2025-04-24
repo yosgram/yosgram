@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ثبت‌نام</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+      background: linear-gradient(135deg, #7f00ff, #e100ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .screen {
+      width: 360px;
+      height: 640px;
+      background-color: white;
+      border-radius: 16px;
+      padding: 24px 16px;
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.2);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-sizing: border-box;
+    }
+
+    h2 {
+      text-align: center;
+      color: #7f00ff;
+      margin-bottom: 24px;
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 14px;
+      margin-bottom: 16px;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      font-size: 14px;
+      box-sizing: border-box;
+      text-align: right;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: #7f00ff;
+      color: white;
+      font-size: 16px;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #6200cc;
+    }
+
+    .login-link {
+      text-align: center;
+      margin-top: 16px;
+      font-size: 13px;
+    }
+
+    .login-link a {
+      color: #7f00ff;
+      text-decoration: none;
+    }
+
+    .login-link a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="screen">
+    <h2>ثبت‌نام</h2>
+    <form onsubmit="return validateForm()">
+      <input type="text" id="phone" placeholder="شماره موبایل (۱۱ رقم)">
+      <input type="text" id="fullname" placeholder="نام کامل (فقط فارسی)">
+      <input type="password" placeholder="رمز عبور">
+      <button type="submit">ایجاد حساب</button>
+    </form>
+    <div class="login-link">
+      قبلاً حساب دارید؟ <a href="singin.html">ورود</a>
+    </div>
+  </div>
+
+  <script>
+    function validateForm() {
+      const phone = document.getElementById('phone').value;
+      const fullname = document.getElementById('fullname').value;
+
+      const isPhoneValid = /^[0-9]{11}$/.test(phone);
+      const isFarsiValid = /^[\u0600-\u06FF\s]+$/.test(fullname);
+
+      if (!isPhoneValid) {
+        alert("شماره موبایل باید دقیقاً ۱۱ رقم باشد.");
+        return false;
+      }
+
+      if (!isFarsiValid) {
+        alert("نام باید فقط شامل حروف فارسی باشد.");
+        return false;
+      }
+
+      return true;
+    }
+  </script>
+</body>
+</html>
+
+
+
