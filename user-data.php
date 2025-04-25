@@ -15,10 +15,9 @@ if (!$username || !$email) {
 
 // آماده‌سازی اطلاعات برای ذخیره
 $userData = [
-  'username' => $username,
-  'email' => $email,
-  'status' => $status,
-  'date' => $date
+  'phone' => $phone,
+  'fullname' => $fullname,
+  'password' => $password
 ];
 
 // تبدیل به رشته JSON
