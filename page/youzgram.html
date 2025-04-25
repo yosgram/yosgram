@@ -1,55 +1,95 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <title>نیاز به ثبت‌نام</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <title>یوزگرام</title>
   <style>
+    @font-face {
+      font-family: 'Shabnam';
+      src: url('font/Kalameh Regular.ttf') format('truetype');
+    }
+
     body {
       margin: 0;
-      font-family: Tahoma, sans-serif;
-      background: linear-gradient(135deg, #ff3c6c, #7e00ff);
+      height: 100vh;
+      background: linear-gradient(135deg, #f59e0b, #8b5cf6);
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      color: white;
+      font-family: 'Shabnam', sans-serif;
     }
 
-    .message-box {
-      background-color: rgba(255,255,255,0.1);
-      padding: 24px;
-      border-radius: 16px;
+    .app-frame {
+      width: 360px;
+      height: 640px;
+      border-radius: 20px;
+      backdrop-filter: blur(14px);
+      background: rgba(255, 255, 255, 0.07);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 0 30px rgba(0,0,0,0.3);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header {
+      background: linear-gradient(135deg, #6366f1, #ec4899);
+      color: white;
+      padding: 14px;
       text-align: center;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-      width: 320px;
+      font-size: 20px;
+      font-weight: bold;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
 
-    .message-box h2 {
-      font-size: 18px;
-      margin-bottom: 16px;
+    .list {
+      flex: 1;
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      overflow-y: auto;
     }
 
-    .message-box a {
-      display: inline-block;
-      padding: 12px 24px;
-      background-color: #2563eb;
+    .list a {
+      display: block;
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
       color: white;
-      border-radius: 8px;
       text-decoration: none;
-      font-size: 14px;
-      margin-top: 8px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      font-size: 16px;
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
     }
 
-    .message-box a:hover {
-      background-color: #1e40af;
+    .list a:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: scale(1.03);
+    }
+
+    .list::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    .list::-webkit-scrollbar-thumb {
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 4px;
     }
   </style>
 </head>
 <body>
-  <div class="message-box">
-    <h2>برای استفاده از این بخش، ابتدا باید ثبت‌نام کنید ✨</h2>
-    <a href="siup.html">رفتن به ثبت‌نام</a>
+  <div class="app-frame">
+    <div class="header">یوزگرام</div>
+    <div class="list">
+      <a href="about.html">درباره ما</a>
+      <a href="rules.html">مقررات</a>
+      <a href="faq.html">سوالات متداول</a>
+      <a href="contact.html">ارتباط با ما</a>
+      <a href="privacy.html">حریم خصوصی</a>
+    </div>
   </div>
 </body>
 </html>
