@@ -2,55 +2,67 @@
 <html lang="fa" dir="rtl">
 <head>
   <meta charset="UTF-8">
-  <title>نیاز به ثبت‌نام</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>در حال بروزرسانی</title>
   <style>
     body {
       margin: 0;
-      font-family: Tahoma, sans-serif;
-      background: linear-gradient(135deg, #ff3c6c, #7e00ff);
+      padding: 0;
+      height: 100vh;
+      background: linear-gradient(135deg, #7f00ff, #e100ff);
       display: flex;
       justify-content: center;
       align-items: center;
-      height: 100vh;
-      color: white;
+      font-family: 'Vazir', sans-serif;
     }
 
-    .message-box {
-      background-color: rgba(255,255,255,0.1);
-      padding: 24px;
-      border-radius: 16px;
+    .container {
+      width: 360px;
+      height: 640px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      border-radius: 24px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
       text-align: center;
-      box-shadow: 0 0 20px rgba(0,0,0,0.3);
-      width: 320px;
+      color: #fff;
+      padding: 20px;
+      box-sizing: border-box;
     }
 
-    .message-box h2 {
-      font-size: 18px;
-      margin-bottom: 16px;
+    .container h1 {
+      font-size: 26px;
+      margin-bottom: 12px;
     }
 
-    .message-box a {
-      display: inline-block;
-      padding: 12px 24px;
-      background-color: #2563eb;
-      color: white;
-      border-radius: 8px;
-      text-decoration: none;
-      font-size: 14px;
-      margin-top: 8px;
+    .container p {
+      font-size: 16px;
+      opacity: 0.8;
     }
 
-    .message-box a:hover {
-      background-color: #1e40af;
+    .icon {
+      font-size: 60px;
+      margin-bottom: 20px;
+      animation: blink 1.5s infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.5; }
     }
   </style>
 </head>
 <body>
-  <div class="message-box">
-    <h2>برای استفاده از این بخش، ابتدا باید ثبت‌نام کنید ✨</h2>
-    <a href="siup.html">رفتن به ثبت‌نام</a>
+
+  <div class="container">
+    <div class="icon">🛠️</div>
+    <h1>در حال بروزرسانی</h1>
+    <p>این بخش به‌زودی با امکانات جدید در دسترس خواهد بود. لطفاً بعداً مراجعه فرمایید.</p>
   </div>
+
 </body>
 </html>
-
