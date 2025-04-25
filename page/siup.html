@@ -80,12 +80,13 @@
 <body>
   <div class="screen">
     <h2>ثبت‌نام</h2>
-    <form onsubmit="return validateForm()">
-      <input type="text" id="phone" placeholder="شماره موبایل (۱۱ رقم)">
-      <input type="text" id="fullname" placeholder="نام کامل (فقط فارسی)">
-      <input type="password" placeholder="رمز عبور">
+    <form action="save-user.php" method="POST">
+      <input type="text" id="phone" name="phone" placeholder="شماره موبایل (۱۱ رقم)">
+      <input type="text" id="fullname" name="fullname" placeholder="نام کامل (فقط فارسی)">
+      <input type="password" name="password" placeholder="رمز عبور">
       <button type="submit">ایجاد حساب</button>
     </form>
+    
     <div class="login-link">
       قبلاً حساب دارید؟ <a href="singin.html">ورود</a>
     </div>
@@ -114,6 +115,3 @@
   </script>
 </body>
 </html>
-
-
-
