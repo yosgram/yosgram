@@ -1,31 +1,42 @@
 <?php
-// user-data.php
+// بررسی اینکه اطلاعات از طریق POST فرستاده شده
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+    $phone = $_POST['phone'] ?? '';
+    $fullname = $_POST['fullname'] ?? '';
+    $password = $_POST['password'] ?? '';
 
-// دریافت داده‌ها از فرم یا جاوااسکریپت
-$username = $_POST['username'] ?? '';
-$email = $_POST['email'] ?? '';
-$status = $_POST['status'] ?? 'registered'; // registered | subscribed | completed_profile
-$date = date("Y-m-d H:i:s");
+    // بررسی اینکه اطلاعات خالی نباشن
+    if (!$phone || !$fullname || !$password) {
+        echo json_encode(['success' => false, 'message' => 'همه‌ی فیلدها باید پر شوند.']);
+        exit;
+    }
 
-// بررسی اینکه اطلاعات خالی نباشن
-if (!$username || !$email) {
-  echo json_encode(['success' => false, 'message' => 'فیلدهای ضروری خالی هستند.']);
-  exit;
+    // ساخت آرایه اطلاعات کاربر
+    $newUser = [
+        "phone" => $phone,
+        "fullname" => $fullname,
+        "password" => password_hash($password, PASSWORD_DEFAULT),
+        "date" => date("Y-m-d H:i:s")
+    ];
+
+    $file = 'users.json';
+    $users = [];
+
+    // اگر فایل از قبل وجود داشت، بخونش
+    if (file_exists($file)) {
+        $jsonData = file_get_contents($file);
+        $users = json_decode($jsonData, true) ?: [];
+    }
+
+    // افزودن کاربر جدید به لیست
+    $users[] = $newUser;
+
+    // ذخیره مجدد فایل
+    file_put_contents($file, json_encode($users, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
+
+    // پاسخ موفق
+    echo json_encode(['success' => true, 'message' => 'اطلاعات با موفقیت ذخیره شد.']);
+} else {
+    echo json_encode(['success' => false, 'message' => 'درخواست نامعتبر.']);
 }
-
-// آماده‌سازی اطلاعات برای ذخیره
-$userData = [
-  'phone' => $phone,
-  'fullname' => $fullname,
-  'password' => $password
-];
-
-// تبدیل به رشته JSON
-$json = json_encode($userData);
-
-// ذخیره در یک فایل
-file_put_contents('users.json', $json . PHP_EOL, FILE_APPEND);
-
-// پاسخ به کاربر
-echo json_encode(['success' => true, 'message' => 'اطلاعات ذخیره شد.']);
 ?>
